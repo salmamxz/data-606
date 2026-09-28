@@ -29,7 +29,6 @@ WHERE age = 27;
 
 SELECT *
 FROM Employees
-WHERE Salary > £35000;
 
 
 
