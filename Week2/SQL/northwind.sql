@@ -9520,3 +9520,26 @@ SELECT *
 FROM Products
 WHERE UnitPrice > 20
 AND UnitsInStock < 20;
+
+
+SELECT ProductName, UnitPrice
+FROM Products
+ORDER BY UnitPrice DESC;
+
+
+
+SELECT *
+FROM Customers
+WHERE Country = 'Germany';
+
+
+
+
+SELECT ProductName, UnitPrice
+FROM Products;
+
+
+
+SELECT ProductName
+FROM Products
+WHERE CategoryID = 1;
