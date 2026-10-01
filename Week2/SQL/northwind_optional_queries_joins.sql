@@ -161,9 +161,6 @@ GROUP BY c.CompanyName;
 
 
 
-
-
-
 SELECT c.CompanyName
 FROM Customers c
 LEFT JOIN Orders o
@@ -181,29 +178,5 @@ GROUP BY e.FirstName, e.LastName;
 
 
 
-SELECT TOP 5 c.CompanyName,
-       SUM(od.Quantity * od.UnitPrice) AS TotalSpend
-FROM Customers c
-JOIN Orders o
-    ON c.CustomerID = o.CustomerID
-JOIN [Order Details] od
-    ON o.OrderID = od.OrderID
-GROUP BY c.CompanyName
-ORDER BY TotalSpend DESC;
-
-
-
-
-
-
-
-SELECT c.CategoryName,
-       SUM(od.Quantity * od.UnitPrice) AS Revenue
-FROM Categories c
-JOIN Products p
-    ON c.CategoryID = p.CategoryID
-JOIN [Order Details] od
-    ON p.ProductID = od.ProductID
-GROUP BY c.CategoryName;
 
 
