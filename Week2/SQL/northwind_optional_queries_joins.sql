@@ -1,0 +1,209 @@
+--testing connexion
+
+USE Northwind;
+GO
+
+SELECT DB_NAME() AS CurrentDatabase;
+
+
+
+SELECT TABLE_NAME
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE';
+
+
+SELECT *
+FROM Customers;
+
+
+SELECT *
+FROM Products;
+
+
+SELECT *
+FROM Orders
+WHERE OrderDate >= '1997-01-01';
+
+
+SELECT *
+FROM Products
+WHERE UnitPrice > 20;
+
+
+SELECT *
+FROM Products
+WHERE UnitPrice > 20
+AND UnitsInStock < 20;
+
+
+SELECT ProductName, UnitPrice
+FROM Products
+ORDER BY UnitPrice DESC;
+
+
+
+SELECT *
+FROM Customers
+WHERE Country = 'Germany';
+
+
+
+
+SELECT ProductName, UnitPrice
+FROM Products;
+
+
+
+SELECT ProductName
+FROM Products
+WHERE CategoryID = 1;
+
+
+
+
+
+--Basic Northwind Queries Exercises
+
+SELECT *
+FROM Customers
+WHERE Country = 'Germany';
+
+
+SELECT *
+FROM Products
+WHERE UnitPrice > 20;
+
+
+
+SELECT FirstName, LastName, City
+FROM Employees;
+
+
+SELECT *
+FROM Products
+WHERE UnitsInStock = 0;
+
+
+SELECT *
+FROM Orders
+WHERE ShipCountry = 'France';
+
+
+SELECT *
+FROM Customers
+WHERE City LIKE 'B%';
+
+
+SELECT *
+FROM Products
+WHERE QuantityPerUnit LIKE '%jar%'
+   OR QuantityPerUnit LIKE '%bottle%';
+
+
+SELECT *
+FROM Employees
+WHERE BirthDate > '1960-01-01';
+
+
+SELECT *
+FROM Products
+ORDER BY UnitPrice DESC;
+
+
+SELECT CompanyName, ContactName
+FROM Customers
+WHERE City = 'London'
+   OR City = 'Madrid';
+
+
+
+
+--Northwind JOIN tasks
+
+
+SELECT c.CompanyName, o.OrderID
+FROM Customers c
+JOIN Orders o
+    ON c.CustomerID = o.CustomerID;
+
+
+
+
+SELECT o.OrderID, o.OrderDate, c.CompanyName
+FROM Orders o
+JOIN Customers c
+    ON o.CustomerID = c.CustomerID;
+
+
+
+
+SELECT od.OrderID, p.ProductName, od.Quantity
+FROM [Order Details] od
+JOIN Products p
+    ON od.ProductID = p.ProductID;
+
+
+
+SELECT od.OrderID, SUM(od.Quantity * od.UnitPrice) AS OrderTotal
+FROM [Order Details] od
+GROUP BY od.OrderID;
+
+
+
+
+SELECT c.CompanyName, SUM(od.Quantity * od.UnitPrice) AS TotalSpend
+FROM Customers c
+JOIN Orders o
+    ON c.CustomerID = o.CustomerID
+JOIN [Order Details] od
+    ON o.OrderID = od.OrderID
+GROUP BY c.CompanyName;
+
+
+
+
+
+
+SELECT c.CompanyName
+FROM Customers c
+LEFT JOIN Orders o
+    ON c.CustomerID = o.CustomerID
+WHERE o.OrderID IS NULL;
+
+
+
+SELECT e.FirstName, e.LastName, COUNT(o.OrderID) AS OrderCount
+FROM Employees e
+LEFT JOIN Orders o
+    ON e.EmployeeID = o.EmployeeID
+GROUP BY e.FirstName, e.LastName;
+
+
+
+
+SELECT TOP 5 c.CompanyName,
+       SUM(od.Quantity * od.UnitPrice) AS TotalSpend
+FROM Customers c
+JOIN Orders o
+    ON c.CustomerID = o.CustomerID
+JOIN [Order Details] od
+    ON o.OrderID = od.OrderID
+GROUP BY c.CompanyName
+ORDER BY TotalSpend DESC;
+
+
+
+
+
+
+
+SELECT c.CategoryName,
+       SUM(od.Quantity * od.UnitPrice) AS Revenue
+FROM Categories c
+JOIN Products p
+    ON c.CategoryID = p.CategoryID
+JOIN [Order Details] od
+    ON p.ProductID = od.ProductID
+GROUP BY c.CategoryName;
+
+
