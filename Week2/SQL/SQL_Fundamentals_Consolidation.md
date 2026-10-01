@@ -50,7 +50,10 @@ References a primary key in another table and connects tables.
 * **Data modelling:** planning how data is organised and connected.
 * **ERD:** diagram showing entities, attributes and relationships.
 * Databases are planned before building to create a clear and efficient structure.
-* Identify **entities → attributes → relationships**.
+* Identify:
+  * entities 
+  * attributes 
+  * relationships.
 
 ## Normalisation
 
