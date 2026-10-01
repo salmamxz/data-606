@@ -9498,10 +9498,6 @@ FROM INFORMATION_SCHEMA.TABLES
 WHERE TABLE_TYPE = 'BASE TABLE';
 
 
-
-
-
-
 SELECT *
 FROM Customers;
 
@@ -9510,10 +9506,17 @@ SELECT *
 FROM Products;
 
 
-
-
 SELECT *
 FROM Orders
 WHERE OrderDate >= '1997-01-01';
 
 
+SELECT *
+FROM Products
+WHERE UnitPrice > 20;
+
+
+SELECT *
+FROM Products
+WHERE UnitPrice > 20
+AND UnitsInStock < 20;
