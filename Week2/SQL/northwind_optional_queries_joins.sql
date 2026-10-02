@@ -137,43 +137,6 @@ JOIN Customers c
 
 
 
-SELECT od.OrderID, p.ProductName, od.Quantity
-FROM [Order Details] od
-JOIN Products p
-    ON od.ProductID = p.ProductID;
-
-
-
-SELECT od.OrderID, SUM(od.Quantity * od.UnitPrice) AS OrderTotal
-FROM [Order Details] od
-GROUP BY od.OrderID;
-
-
-
-
-SELECT c.CompanyName, SUM(od.Quantity * od.UnitPrice) AS TotalSpend
-FROM Customers c
-JOIN Orders o
-    ON c.CustomerID = o.CustomerID
-JOIN [Order Details] od
-    ON o.OrderID = od.OrderID
-GROUP BY c.CompanyName;
-
-
-
-SELECT c.CompanyName
-FROM Customers c
-LEFT JOIN Orders o
-    ON c.CustomerID = o.CustomerID
-WHERE o.OrderID IS NULL;
-
-
-
-SELECT e.FirstName, e.LastName, COUNT(o.OrderID) AS OrderCount
-FROM Employees e
-LEFT JOIN Orders o
-    ON e.EmployeeID = o.EmployeeID
-GROUP BY e.FirstName, e.LastName;
 
 
 
