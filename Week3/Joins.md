@@ -13,7 +13,7 @@ For example, in the Northwind database:
 - Both tables contain `CustomerID`.
 
 I can use `CustomerID` to connect a customer to their orders.
-
+          
 ```sql
 SELECT
     c.CompanyName,
