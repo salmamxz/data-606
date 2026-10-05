@@ -13,7 +13,7 @@ WHERE TABLE_TYPE = 'BASE TABLE';
 -- joins
 
 
---1. Customers + Orders
+--1
 SELECT c.CompanyName, o.OrderID
 FROM Customers c
 JOIN Orders o
@@ -21,27 +21,27 @@ JOIN Orders o
 
 
 
---2. Orders with Customer Names
+--2
 SELECT o.OrderID, o.OrderDate, c.CompanyName
 FROM Orders o
 JOIN Customers c
     ON o.CustomerID = c.CustomerID;
 
 
---3. Orders with Product Names
+--3
 SELECT od.OrderID, p.ProductName, od.Quantity
 FROM [Order Details] od
 JOIN Products p
     ON od.ProductID = p.ProductID;
 
 
---4. Order Totals
+--4
 SELECT od.OrderID, SUM(od.Quantity * od.UnitPrice) AS OrderTotal
 FROM [Order Details] od
 GROUP BY od.OrderID;
 
 
---5. Total Spend per Customer
+--5
 SELECT c.CompanyName, SUM(od.Quantity * od.UnitPrice) AS TotalSpend
 FROM Customers c
 JOIN Orders o
@@ -51,7 +51,7 @@ JOIN [Order Details] od
 GROUP BY c.CompanyName;
 
 
---6. Customers with No Orders
+--6
 SELECT c.CompanyName
 FROM Customers c
 LEFT JOIN Orders o
@@ -59,7 +59,7 @@ LEFT JOIN Orders o
 WHERE o.OrderID IS NULL;
 
 
---7. Products Never Ordered
+--7
 SELECT p.ProductName
 FROM Products p
 LEFT JOIN [Order Details] od
@@ -67,7 +67,7 @@ LEFT JOIN [Order Details] od
 WHERE od.ProductID IS NULL;
 
 
---8. Orders per Employee
+--8
 SELECT e.FirstName, e.LastName, COUNT(o.OrderID) AS OrderCount
 FROM Employees e
 LEFT JOIN Orders o
@@ -75,7 +75,7 @@ LEFT JOIN Orders o
 GROUP BY e.FirstName, e.LastName;
 
 
---9. Top 5 Customers by Spend
+--9
 SELECT TOP 5 c.CompanyName,
        SUM(od.Quantity * od.UnitPrice) AS TotalSpend
 FROM Customers c
@@ -87,7 +87,7 @@ GROUP BY c.CompanyName
 ORDER BY TotalSpend DESC;
 
 
---10. Revenue by Category
+--10
 SELECT c.CategoryName,
        SUM(od.Quantity * od.UnitPrice) AS Revenue
 FROM Categories c
@@ -98,7 +98,7 @@ JOIN [Order Details] od
 GROUP BY c.CategoryName;
 
 
---11. Full Order Breakdown
+--11
 SELECT o.OrderID,
        c.CompanyName,
        p.ProductName,
@@ -113,7 +113,7 @@ JOIN Products p
     ON od.ProductID = p.ProductID;
 
 
---12. Average Order Value per Customer
+--12
 SELECT c.CompanyName,
        COUNT(DISTINCT o.OrderID) AS NumberOfOrders,
        SUM(od.Quantity * od.UnitPrice) AS TotalSpend,
@@ -126,7 +126,7 @@ JOIN [Order Details] od
 GROUP BY c.CompanyName;
 
 
---13. Employees with No Orders
+--13
 SELECT e.FirstName, e.LastName
 FROM Employees e
 LEFT JOIN Orders o
@@ -134,7 +134,7 @@ LEFT JOIN Orders o
 WHERE o.OrderID IS NULL;
 
 
---14. Most Popular Product
+--14
 SELECT TOP 1 p.ProductName,
        SUM(od.Quantity) AS TotalQuantity
 FROM Products p
@@ -144,7 +144,7 @@ GROUP BY p.ProductName
 ORDER BY TotalQuantity DESC;
 
 
---15. Orders with Shipping Company
+--15
 SELECT o.OrderID, s.CompanyName
 FROM Orders o
 JOIN Shippers s
