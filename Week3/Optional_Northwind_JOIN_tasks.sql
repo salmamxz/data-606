@@ -36,9 +36,35 @@ JOIN Products p
 
 
 --4
-SELECT od.OrderID, SUM(od.Quantity * od.UnitPrice) AS OrderTotal
+SELECT od.OrderID,
+       SUM(od.Quantity * od.UnitPrice) AS OrderTotal
 FROM [Order Details] od
 GROUP BY od.OrderID;
+
+
+-- with discount
+SELECT
+    od.OrderID,
+    p.ProductName,
+    od.Quantity,
+    od.UnitPrice,
+    od.Discount,
+    od.UnitPrice * od.Quantity * (1 - od.Discount) AS TotalPrice
+FROM [Order Details] od
+JOIN Products p
+    ON od.ProductID = p.ProductID;
+
+
+
+
+--test
+SELECT
+    o.OrderID,
+    SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)) AS TotalPrice
+FROM Orders o
+INNER JOIN [Order Details] od
+    ON o.OrderID = od.OrderID
+GROUP BY o.OrderID;
 
 
 --5
