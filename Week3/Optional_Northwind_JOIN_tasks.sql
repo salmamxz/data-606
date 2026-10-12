@@ -176,3 +176,62 @@ FROM Orders o
 JOIN Shippers s
     ON o.ShipVia = s.ShipperID;
 
+
+
+
+
+
+
+
+
+
+-- mercredi 07 octobre
+
+SELECT * FROM Customers
+WHERE Region IN ('WA', 'SP');
+
+
+
+
+SELECT * FROM Territories
+WHERE TerritoryID BETWEEN '06800' AND '09999';
+
+
+
+SELECT * FROM Products
+WHERE ProductName LIKE 'Ch%';
+
+
+
+
+
+
+--1
+SELECT
+    CategoryID,
+    AVG(ReorderLevel) AS AverageReorderLevel
+FROM Products
+GROUP BY CategoryID;
+
+
+--2
+SELECT
+    CategoryID,
+    AVG(ReorderLevel) AS AverageReorderLevel
+FROM Products
+GROUP BY CategoryID
+ORDER BY AverageReorderLevel DESC;
+
+
+--3
+
+
+SELECT
+    OrderID, ProductID, UnitPrice, Quantity, Discount
+FROM [Order Details]
+WHERE ProductID IN
+(
+    SELECT ProductID
+    FROM Products
+    WHERE Discontinued = 1
+);
