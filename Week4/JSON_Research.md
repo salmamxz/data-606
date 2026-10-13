@@ -9,7 +9,7 @@ JSON stands for **JavaScript Object Notation**. It is a lightweight format used 
 JSON is used to store and transfer data between applications and systems.
 
 For example:
-- Sending data between a website and a server.
+- Sending data between a website and a server. 
 - Storing information about books, users or products.
 - Working with APIs.
 - Transferring data between different programming languages.

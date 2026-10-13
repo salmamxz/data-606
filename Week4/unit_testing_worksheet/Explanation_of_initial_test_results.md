@@ -6,4 +6,4 @@ The three failures were related to missing values. The `Book Name` column contai
 
 I kept the failing tests because they identify data quality issues that could affect further analysis. The other tests passed, confirming that the dataset has the expected structure, that selected columns have appropriate data types, that observed categories match the expected categories, that selected numerical values fall within the tested ranges, and that there are no duplicate rows.
 
-My next step is to investigate how these missing values should be handled. I will avoid removing or replacing values without a clear reason, then rerun the tests to check whether any changes improve data quality without introducing new problems.
+My next step is to investigate how these missing values should be handled. I will avoid removing or replacing values without a clear reason, then rerun the tests to check whether any changes improve data quality without introducing new problems. 
