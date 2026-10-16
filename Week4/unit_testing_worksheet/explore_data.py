@@ -1,7 +1,7 @@
 import pandas as pd
 
 # load the book sales dataset
-df = pd.read_csv("../../book_sales.csv")
+df = pd.read_csv("../book_management/book_sales.csv")
 
 # check the number of rows and columns
 print("\n--- dataset shape ---")
