@@ -93,17 +93,3 @@ Python application → SQLAlchemy Engine → pyodbc → ODBC driver → SQL Serv
 - pyodbc documentation: https://github.com/mkleehammer/pyodbc
 - Pandas SQL documentation: https://pandas.pydata.org/docs/reference/api/pandas.read_sql_query.html
 
-## 5. Practical Work
-
-The practical exercises will be completed in a separate Python file, `sqlalchemy_northwind.py`.
-
-The exercises will cover:
-
-1. Installing and importing SQLAlchemy.
-2. Connecting to the Northwind SQL Server database.
-3. Retrieving customers from London.
-4. Retrieving products costing more than £20.
-5. Finding the ten most expensive products.
-6. Loading the Orders table into a Pandas DataFrame.
-7. Calculating total orders per customer.
-8. Identifying the customer with the most orders, the number of unique customers who placed orders and the average number of orders per customer.
